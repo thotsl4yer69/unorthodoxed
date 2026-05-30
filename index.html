@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNORTHODOXED — Wear The Defiance</title>
+<meta name="description" content="UNORTHODOXED streetwear. Drops for those who refuse the algorithm.">
+<style>
+:root{
+  --accent:#8B5CF6;
+  --accent-bright:#A78BFA;
+  --ink:#0A0A0F;
+  --ink-2:#13131C;
+  --bone:#EDEDED;
+  --grit:#262630;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink);
+  color:var(--bone);
+  font-family:'Courier New','Andale Mono',monospace;
+  overflow-x:hidden;
+  line-height:1.4;
+}
+::selection{background:var(--accent);color:var(--ink)}
+
+/* noise overlay */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  pointer-events:none;
+  z-index:1000;
+  opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* nav */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.2rem 2rem;
+  background:rgba(10,10,15,.8);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--grit);
+}
+.logo{
+  font-family:'Impact','Arial Black',sans-serif;
+  font-size:1.4rem;
+  letter-spacing:.3rem;
+  font-weight:900;
+  text-transform:uppercase;
+  transform:skewX(-5deg);
+  color:var(--bone);
+  text-decoration:none;
+}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{
+  color:var(--bone);text-decoration:none;
+  font-size:.75rem;letter-spacing:.2rem;
+  text-transform:uppercase;
+  transition:color .2s;
+  position:relative;
+}
+.nav-links a:hover{color:var(--accent-bright)}
+.nav-links a::before{content:'//';color:var(--accent);margin-right:.3rem;opacity:0;transition:opacity .2s}
+.nav-links a:hover::before{opacity:1}
+
+/* hero */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(139,92,246,.25), transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(139,92,246,.15), transparent 60%),
+    var(--ink);
+  overflow:hidden;
+}
+.hero::after{
+  content:'UNORTHODOXED';
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%) rotate(-8deg);
+  font-family:'Impact','Arial Black',sans-serif;
+  font-size:clamp(8rem,25vw,28rem);
+  font-weight:900;
+  color:rgba(139,92,246,.05);
+  letter-spacing:-.05em;
+  pointer-events:none;
+  z-index:0;
+  white-space:nowrap;
+}
+.hero-inner{position:relative;z-index:2;text-align:center;padding:2rem}
+.hero h1{
+  font-family:'Impact','Arial Black',sans-serif;
+  font-size:clamp(3rem,12vw,10rem);
+  font-weight:900;
+  line-height:.85;
+  letter-spacing:-.03em;
+  text-transform:uppercase;
+  margin-bottom:1.5rem;
+}
+.hero h1 .strike{
+  display:inline-block;
+  position:relative;
+  color:var(--bone);
+}
+.hero h1 .strike::after{
+  content:'';
+  position:absolute;top:50%;left:-5%;
+  width:110%;height:8px;
+  background:var(--accent);
+  transform:rotate(-2deg);
+}
+.hero h1 .accent{color:var(--accent-bright);font-style:italic}
+.hero p{
+  font-size:.9rem;
+  letter-spacing:.4rem;
+  text-transform:uppercase;
+  color:#888;
+  margin-bottom:2rem;
+}
+.cta{
+  display:inline-block;
+  padding:1rem 2.5rem;
+  border:2px solid var(--accent);
+  color:var(--bone);
+  text-decoration:none;
+  font-size:.85rem;
+  letter-spacing:.3rem;
+  text-transform:uppercase;
+  font-weight:700;
+  background:transparent;
+  transition:all .25s;
+  position:relative;
+  overflow:hidden;
+}
+.cta::before{
+  content:'';position:absolute;inset:0;
+  background:var(--accent);
+  transform:translateX(-101%);
+  transition:transform .3s;
+  z-index:-1;
+}
+.cta:hover::before{transform:translateX(0)}
+.cta:hover{color:var(--ink)}
+
+/* glitch */
+.glitch{position:relative;display:inline-block}
+.glitch::before,.glitch::after{
+  content:attr(data-text);
+  position:absolute;top:0;left:0;width:100%;
+}
+.glitch::before{color:var(--accent);transform:translate(-2px,2px);mix-blend-mode:screen;opacity:.7;animation:glitch 4s infinite}
+.glitch::after{color:#06b6d4;transform:translate(2px,-2px);mix-blend-mode:screen;opacity:.7;animation:glitch 4s infinite reverse}
+@keyframes glitch{
+  0%,90%,100%{transform:translate(0)}
+  92%{transform:translate(-3px,2px)}
+  94%{transform:translate(3px,-2px)}
+  96%{transform:translate(-2px,-1px)}
+  98%{transform:translate(2px,1px)}
+}
+
+/* sections */
+section{padding:8rem 2rem;max-width:1400px;margin:0 auto;position:relative;z-index:2}
+.section-tag{
+  display:inline-block;
+  font-size:.7rem;
+  letter-spacing:.4rem;
+  color:var(--accent-bright);
+  margin-bottom:1rem;
+  text-transform:uppercase;
+}
+.section-tag::before{content:'[ '}
+.section-tag::after{content:' ]'}
+.section-title{
+  font-family:'Impact','Arial Black',sans-serif;
+  font-size:clamp(2.5rem,7vw,5rem);
+  font-weight:900;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+  line-height:.9;
+  margin-bottom:3rem;
+}
+
+/* about */
+.about-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:3rem;
+  margin-top:3rem;
+}
+.about-text p{
+  font-size:1.1rem;
+  color:#bbb;
+  margin-bottom:1.5rem;
+  line-height:1.7;
+}
+.manifesto{
+  border-left:4px solid var(--accent);
+  padding:1.5rem 2rem;
+  background:var(--ink-2);
+}
+.manifesto-line{
+  display:block;
+  padding:.4rem 0;
+  font-size:.95rem;
+  color:#ccc;
+  border-bottom:1px dashed var(--grit);
+}
+.manifesto-line:last-child{border-bottom:none}
+.manifesto-line::before{content:'> ';color:var(--accent)}
+
+/* collection grid */
+.collection-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:1.5rem;
+}
+.product{
+  background:var(--ink-2);
+  border:1px solid var(--grit);
+  padding:1.5rem;
+  position:relative;
+  transition:all .3s;
+  cursor:pointer;
+  overflow:hidden;
+}
+.product::before{
+  content:'';position:absolute;top:0;left:0;
+  width:0;height:2px;background:var(--accent);
+  transition:width .4s;
+}
+.product:hover{border-color:var(--accent);transform:translateY(-4px)}
+.product:hover::before{width:100%}
+.product-img{
+  width:100%;aspect-ratio:1;
+  background:linear-gradient(135deg,var(--grit),var(--ink));
+  margin-bottom:1rem;position:relative;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Impact',sans-serif;
+  font-size:3rem;
+  color:rgba(139,92,246,.3);
+  letter-spacing:-.05em;
+  overflow:hidden;
+}
+.product-img::after{
+  content:attr(data-sku);
+  position:absolute;top:.5rem;right:.5rem;
+  font-family:monospace;font-size:.65rem;
+  color:#666;letter-spacing:.1rem;
+}
+.product-name{font-size:.95rem;font-weight:700;text-transform:uppercase;letter-spacing:.1rem;margin-bottom:.3rem}
+.product-meta{display:flex;justify-content:space-between;align-items:center;margin-top:.8rem}
+.product-price{color:var(--accent-bright);font-weight:700;font-size:1rem}
+.product-status{font-size:.7rem;letter-spacing:.2rem;text-transform:uppercase;color:#888}
+.status-sold{color:#ef4444}
+.status-live{color:#10b981}
+
+/* lookbook */
+.lookbook{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  grid-auto-rows:120px;
+  gap:1rem;
+  margin-top:3rem;
+}
+.look{
+  background:linear-gradient(135deg,var(--ink-2),var(--grit));
+  position:relative;
+  overflow:hidden;
+  display:flex;align-items:flex-end;
+  padding:1rem;
+  transition:transform .3s;
+}
+.look:hover{transform:scale(1.02)}
+.look-label{
+  font-family:'Impact',sans-serif;
+  letter-spacing:.2rem;
+  text-transform:uppercase;
+  font-size:.8rem;
+  color:var(--bone);
+  z-index:2;
+}
+.look::after{
+  content:attr(data-num);
+  position:absolute;top:1rem;right:1rem;
+  font-family:'Impact',sans-serif;
+  font-size:3rem;
+  color:rgba(139,92,246,.4);
+  line-height:1;
+}
+.look-1{grid-column:span 7;grid-row:span 3;background:linear-gradient(135deg,#1a0f2e,#2d1b4e)}
+.look-2{grid-column:span 5;grid-row:span 2;background:linear-gradient(135deg,#13131c,#262630)}
+.look-3{grid-column:span 5;grid-row:span 2;background:linear-gradient(135deg,#0f0f1a,#1a1a2e)}
+.look-4{grid-column:span 4;grid-row:span 2;background:linear-gradient(135deg,#2d1b4e,#1a0f2e)}
+.look-5{grid-column:span 8;grid-row:span 2;background:linear-gradient(135deg,#1a1a2e,#0a0a14)}
+
+/* calendar */
+.calendar-list{display:flex;flex-direction:column;gap:.5rem;margin-top:2rem}
+.drop{
+  display:grid;
+  grid-template-columns:auto 1fr auto auto;
+  gap:2rem;
+  align-items:center;
+  padding:1.5rem;
+  background:var(--ink-2);
+  border-left:3px solid var(--grit);
+  transition:all .25s;
+}
+.drop:hover{border-left-color:var(--accent);background:#1a1a26}
+.drop-date{
+  font-family:'Impact',sans-serif;
+  font-size:1.8rem;
+  letter-spacing:.05rem;
+  color:var(--accent-bright);
+  min-width:90px;
+}
+.drop-date small{display:block;font-size:.6rem;color:#888;letter-spacing:.3rem}
+.drop-name{font-weight:700;text-transform:uppercase;letter-spacing:.15rem;font-size:.9rem}
+.drop-pieces{font-size:.7rem;color:#888;letter-spacing:.2rem;text-transform:uppercase}
+.drop-status{
+  font-size:.7rem;letter-spacing:.2rem;text-transform:uppercase;
+  padding:.4rem .8rem;border:1px solid var(--grit);
+}
+.live{color:#10b981;border-color:#10b981}
+.upcoming{color:var(--accent-bright);border-color:var(--accent)}
+.sold{color:#666;border-color:#444}
+
+/* contact */
+.contact{
+  text-align:center;
+  background:radial-gradient(ellipse at center,rgba(139,92,246,.15),transparent 70%);
+  padding:10rem 2rem;
+}
+.contact .section-title{margin-bottom:2rem}
+.contact p{font-size:1rem;color:#aaa;max-width:600px;margin:0 auto 2rem;line-height:1.8}
+.socials{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+.social{
+  border:1px solid var(--grit);
+  padding:1rem 2rem;
+  color:var(--bone);text-decoration:none;
+  font-size:.75rem;letter-spacing:.3rem;text-transform:uppercase;
+  transition:all .25s;
+}
+.social:hover{border-color:var(--accent);color:var(--accent-bright);background:rgba(139,92,246,.05)}
+
+/* footer */
+footer{
+  border-top:1px solid var(--grit);
+  padding:2rem;
+  text-align:center;
+  color:#555;
+  font-size:.7rem;
+  letter-spacing:.2rem;
+  text-transform:uppercase;
+}
+
+/* mobile */
+@media (max-width:768px){
+  nav{padding:1rem}
+  .nav-links{display:none}
+  section{padding:5rem 1.5rem}
+  .hero{padding:5rem 1rem 3rem}
+  .drop{grid-template-columns:auto 1fr;gap:1rem}
+  .drop-status,.drop-pieces{grid-column:span 2;justify-self:start}
+  .lookbook{grid-auto-rows:80px}
+  .look-1,.look-2,.look-3,.look-4,.look-5{grid-column:span 12;grid-row:span 2}
+}
+
+/* fade in */
+.reveal{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.16,1,.3,1)}
+.reveal.show{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">UN<span>/</span>ORTHODOXED</a>
+  <ul class="nav-links">
+    <li><a href="#about">Manifesto</a></li>
+    <li><a href="#collection">Drops</a></li>
+    <li><a href="#lookbook">Lookbook</a></li>
+    <li><a href="#calendar">Calendar</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <h1>
+      <span class="strike">CONFORM</span><br>
+      <span class="accent">WEAR THE</span><br>
+      <span class="glitch" data-text="DEFIANCE">DEFIANCE</span>
+    </h1>
+    <p>// Independent streetwear &nbsp;·&nbsp; Built outside the algorithm</p>
+    <a href="#collection" class="cta">View Current Drop</a>
+  </div>
+</header>
+
+<section id="about" class="reveal">
+  <span class="section-tag">01 / About</span>
+  <h2 class="section-title">Not Made For Everyone.<br>That's the point.</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>UNORTHODOXED is independent streetwear out of nowhere in particular, made for the people who never got the memo. Limited runs. No restocks. No collabs we don't believe in.</p>
+      <p>Every drop is small, every piece numbered, every silhouette tested against the noise. We don't chase trends — we burn them.</p>
+    </div>
+    <div class="manifesto">
+      <span class="manifesto-line">Reject the uniform</span>
+      <span class="manifesto-line">Refuse the restock</span>
+      <span class="manifesto-line">Burn the trend cycle</span>
+      <span class="manifesto-line">Own the silhouette</span>
+      <span class="manifesto-line">Wear what they won't</span>
+    </div>
+  </div>
+</section>
+
+<section id="collection" class="reveal">
+  <span class="section-tag">02 / Collection 04</span>
+  <h2 class="section-title">Current Drop // VOL.04</h2>
+  <div class="collection-grid">
+    <div class="product">
+      <div class="product-img" data-sku="SKU-041">UN</div>
+      <div class="product-name">Deadweight Hoodie</div>
+      <div class="product-meta"><span class="product-price">$185</span><span class="product-status status-live">In Stock</span></div>
+    </div>
+    <div class="product">
+      <div class="product-img" data-sku="SKU-042">OX</div>
+      <div class="product-name">Riot Cargo Pant</div>
+      <div class="product-meta"><span class="product-price">$220</span><span class="product-status status-live">In Stock</span></div>
+    </div>
+    <div class="product">
+      <div class="product-img" data-sku="SKU-043">D4</div>
+      <div class="product-name">Static Tee — Violet</div>
+      <div class="product-meta"><span class="product-price">$85</span><span class="product-status status-sold">Sold Out</span></div>
+    </div>
+    <div class="product">
+      <div class="product-img" data-sku="SKU-044">XX</div>
+      <div class="product-name">Overlayer Vest</div>
+      <div class="product-meta"><span class="product-price">$165</span><span class="product-status status-live">In Stock</span></div>
+    </div>
+    <div class="product">
+      <div class="product-img" data-sku="SKU-045">DE</div>
+      <div class="product-name">Distortion Crewneck</div>
+      <div class="product-meta"><span class="product-price">$140</span><span class="product-status status-live">In Stock</span></div>
+    </div>
+    <div class="product">
+      <div class="product-img" data-sku="SKU-046">F1</div>
+      <div class="product-name">Burn The Brief Cap</div>
+      <div class="product-meta"><span class="product-price">$55</span><span class="product-status status-sold">Sold Out</span></div>
+    </div>
+    <div class="product">
+      <div class="product-img" data-sku="SKU-047">A1</div>
+      <div class="product-name">Anti-Pattern Shorts</div>
+      <div class="product-meta"><span class="product-price">$110</span><span class="product-status status-live">In Stock</span></div>
+    </div>
+    <div class="product">
+      <div class="product-img" data-sku="SKU-048">N9</div>
+      <div class="product-name">Null Set Beanie</div>
+      <div class="product-meta"><span class="product-price">$45</span><span class="product-status status-live">In Stock</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="lookbook" class="reveal">
+  <span class="section-tag">03 / Lookbook</span>
+  <h2 class="section-title">Editorial // VOL.04</h2>
+  <div class="lookbook">
+    <div class="look look-1" data-num="01"><span class="look-label">// Concrete Edition</span></div>
+    <div class="look look-2" data-num="02"><span class="look-label">// Underpass</span></div>
+    <div class="look look-3" data-num="03"><span class="look-label">// Night Format</span></div>
+    <div class="look look-4" data-num="04"><span class="look-label">// Layered Up</span></div>
+    <div class="look look-5" data-num="05"><span class="look-label">// Vacancy</span></div>
+  </div>
+</section>
+
+<section id="calendar" class="reveal">
+  <span class="section-tag">04 / Drop Calendar</span>
+  <h2 class="section-title">2026 Drop Schedule</h2>
+  <div class="calendar-list">
+    <div class="drop">
+      <div class="drop-date">05.30<small>NOW</small></div>
+      <div>
+        <div class="drop-name">VOL.04 — Deadweight</div>
+        <div class="drop-pieces">8 pieces · numbered 1–250</div>
+      </div>
+      <div></div>
+      <span class="drop-status live">● Live</span>
+    </div>
+    <div class="drop">
+      <div class="drop-date">07.15<small>JUL</small></div>
+      <div>
+        <div class="drop-name">VOL.05 — Subroutine</div>
+        <div class="drop-pieces">Capsule · 5 pieces · numbered 1–150</div>
+      </div>
+      <div></div>
+      <span class="drop-status upcoming">○ Upcoming</span>
+    </div>
+    <div class="drop">
+      <div class="drop-date">09.20<small>SEP</small></div>
+      <div>
+        <div class="drop-name">VOL.06 — Underlayer</div>
+        <div class="drop-pieces">Full season · 12 pieces</div>
+      </div>
+      <div></div>
+      <span class="drop-status upcoming">○ Upcoming</span>
+    </div>
+    <div class="drop">
+      <div class="drop-date">02.14<small>FEB</small></div>
+      <div>
+        <div class="drop-name">VOL.03 — Static</div>
+        <div class="drop-pieces">Sold through · archive only</div>
+      </div>
+      <div></div>
+      <span class="drop-status sold">✕ Closed</span>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact reveal">
+  <span class="section-tag">05 / Contact</span>
+  <h2 class="section-title">Reach Us.<br>Or Don't.</h2>
+  <p>We don't run a customer service desk. We do read every message that lands in the inbox. If a piece misbehaves, if a fit is off, if you want a wholesale conversation — we'll get back.</p>
+  <div class="socials">
+    <a href="#" class="social">@unorthodoxed_</a>
+    <a href="#" class="social">Email</a>
+    <a href="#" class="social">Newsletter</a>
+    <a href="#" class="social">Tiktok</a>
+  </div>
+</section>
+
+<footer>
+  © UNORTHODOXED 2026 // Independent · Numbered · Unrepeatable
+</footer>
+
+<script>
+// reveal on scroll
+const obs = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('show')), {threshold:.1});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// parallax hero text
+const heroBg = document.querySelector('.hero');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if (heroBg && y < window.innerHeight) {
+    heroBg.style.backgroundPosition = `center ${y * 0.4}px`;
+  }
+});
+
+// nav blur intensifies on scroll
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) nav.style.background = 'rgba(10,10,15,.95)';
+  else nav.style.background = 'rgba(10,10,15,.8)';
+});
+</script>
+</body>
+</html>
