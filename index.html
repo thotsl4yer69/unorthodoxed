@@ -6,6 +6,7 @@
 <title>UNORTHODOXED — DEFY THE ORDINARY</title>
 <meta name="description" content="Independent Melbourne streetwear. No mass production. No compromise. Limited drops for those who refuse the algorithm.">
 <meta name="theme-color" content="#0A0A0A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0A0A'/%3E%3Ctext x='16' y='24' font-family='Arial,Helvetica,sans-serif' font-size='22' font-weight='bold' fill='%238B5CF6' text-anchor='middle'%3EU%3C/text%3E%3C/svg%3E">
 <meta property="og:title" content="UNORTHODOXED — DEFY THE ORDINARY">
 <meta property="og:description" content="Independent Melbourne streetwear. Limited drops only.">
 <meta property="og:type" content="website">
@@ -2699,10 +2700,8 @@ footer{
   }, { passive: true });
 
   // ============= COUNTDOWN =============
-  // Target: 14 days from now at 8PM AEST
-  const target = new Date();
-  target.setDate(target.getDate() + 14);
-  target.setHours(20, 0, 0, 0);
+  // Target: VOL.05 "Static" drop — 14.06.2026 at 8PM AEST (UTC+10, no DST in June)
+  const target = new Date('2026-06-14T20:00:00+10:00');
 
   function pad(n){ return n < 10 ? '0' + n : '' + n; }
   function updateCountdown(){
